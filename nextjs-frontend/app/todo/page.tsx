@@ -4,6 +4,8 @@ import { TodoForm } from "./components/TodoForm";
 import { TodoList } from "./components/TodoList";
 import TodosQuery from "./graphql/query.graphql";
 
+export const dynamic = "force-dynamic";
+
 const Page: NextPage = async () => {
   const apolloClient = getClient();
   const { data: todosQueryDate } = await apolloClient.query({
