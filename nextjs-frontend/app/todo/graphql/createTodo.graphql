@@ -1,0 +1,8 @@
+mutation CreateTodo($title: String!) {
+  createTodo(title: $title, dueDate: "2024-01-11") {
+    id
+    title
+    isCompleted
+    dueDate
+  }
+}

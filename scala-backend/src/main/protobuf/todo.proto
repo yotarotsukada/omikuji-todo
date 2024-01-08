@@ -1,0 +1,63 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "scala_backend.todo.grpc";
+option java_outer_classname = "TodoProto";
+
+package scala_backend.todo;
+
+service TodoService {
+  rpc GetTodos (GetTodosRequest) returns (GetTodosReply) {}
+  rpc CreateTodo (CreateTodoRequest) returns (CreateTodoReply) {}
+  rpc UpdateTodo (UpdateTodoRequest) returns (UpdateTodoReply) {}
+}
+
+message GetTodosRequest {
+  string userId = 1;
+}
+
+message GetTodosReply {
+  int32 status = 1;
+  GetTodosResponse data = 2;
+}
+
+message GetTodosResponse {
+  repeated TodoMessage todos = 1;
+}
+
+message CreateTodoRequest {
+  string title = 1;
+  int64 dueDate = 2;
+}
+
+message CreateTodoReply {
+  int32 status = 1;
+  CreateTodoResponse data = 2;
+}
+
+message CreateTodoResponse {
+  TodoMessage todo = 1;
+}
+
+message UpdateTodoRequest {
+  string id = 1;
+  string title = 2;
+  bool isCompleted = 3;
+  int64 dueDate = 4;
+}
+
+message UpdateTodoReply {
+  int32 status = 1;
+  UpdateTodoResponse data = 2;
+}
+
+message UpdateTodoResponse {
+  TodoMessage todo = 1;
+}
+
+message TodoMessage {
+  string id = 1;
+  string title = 2;
+  bool isCompleted = 3;
+  int64 dueDate = 4;
+}

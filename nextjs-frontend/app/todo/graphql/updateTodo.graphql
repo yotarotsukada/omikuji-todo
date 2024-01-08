@@ -1,0 +1,13 @@
+mutation UpdateTodo($id: String!, $title: String!, $isCompleted: Boolean!) {
+  updateTodo(
+    id: $id
+    title: $title
+    dueDate: "2024-01-11"
+    isCompleted: $isCompleted
+  ) {
+    id
+    title
+    isCompleted
+    dueDate
+  }
+}

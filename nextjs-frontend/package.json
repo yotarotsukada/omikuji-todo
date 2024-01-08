@@ -1,0 +1,41 @@
+{
+  "name": "nextjs-frontend",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "build": "next build",
+    "dev": "next dev",
+    "gql:fetch": "./scripts/getSchema.sh",
+    "gql:codegen": "nitrogql generate",
+    "lint": "next lint",
+    "start": "next start"
+  },
+  "dependencies": {
+    "@apollo/client": "3.8.0-rc.2",
+    "@apollo/experimental-nextjs-app-support": "^0.6.0",
+    "@lit-labs/nextjs": "^0.1.4",
+    "@lit-labs/react": "^2.1.2",
+    "@lit/react": "^1.0.2",
+    "graphql": "^16.8.1",
+    "lit": "^3.1.0",
+    "next": "14.0.4",
+    "react": "^18",
+    "react-dom": "^18"
+  },
+  "devDependencies": {
+    "@graphql-typed-document-node/core": "^3.2.0",
+    "@nitrogql/cli": "1.6.0-beta.1",
+    "@nitrogql/graphql-loader": "1.6.0-beta.1",
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "autoprefixer": "^10.0.1",
+    "eslint": "^8",
+    "eslint-config-next": "14.0.4",
+    "node-fetch": "^3.3.2",
+    "postcss": "^8",
+    "tailwindcss": "^3.3.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5"
+  }
+}

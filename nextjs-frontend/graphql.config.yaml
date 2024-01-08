@@ -1,0 +1,12 @@
+schema: ./schema/schema.graphql
+documents: ./app/**/*.graphql
+extensions:
+  nitrogql:
+    plugins:
+      - "nitrogql:graphql-scalars-plugin"
+    generate:
+      schemaOutput: ./app/_generated/schema.d.ts
+      resolversOutput: ./app/_generated/resolvers.d.ts
+      type:
+        scalarTypes:
+          DateTime: string

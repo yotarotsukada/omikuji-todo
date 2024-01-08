@@ -1,0 +1,1 @@
+{"version":3,"file":"createTodo.d.graphql.ts","sourceRoot":"","sources":["..\/..\/..\/schema\/schema.graphql",".\/createTodo.graphql"],"names":["CreateTodo"],"mappings":";;;KCASA,gBAAU,AAAkB;;;;;;;;;KAA5BA,mBAAU;;;;cAAVA,kBAAU,AAAkB"}

@@ -1,0 +1,40 @@
+﻿schema {
+  query: Query
+  mutation: Mutation
+}
+
+type Author {
+  name: String!
+}
+
+type Book {
+  title: String!
+  author: Author!
+}
+
+type Mutation {
+  createTodo(title: String! dueDate: DateTime!): Todo!
+  updateTodo(id: String! title: String! dueDate: DateTime! isCompleted: Boolean!): Todo!
+}
+
+type Query {
+  book: Book!
+  me: String!
+  todos: [Todo!]!
+}
+
+type Todo {
+  id: ID!
+  title: String!
+  isCompleted: Boolean!
+  dueDate: DateTime!
+}
+
+enum ApplyPolicy {
+  BEFORE_RESOLVER
+  AFTER_RESOLVER
+  VALIDATION
+}
+
+"The `DateTime` scalar represents an ISO-8601 compliant date time type."
+scalar DateTime @specifiedBy(url: "https:\/\/www.graphql-scalars.com\/date-time")
