@@ -16,6 +16,8 @@ class Main(system: ActorSystem) {
 
   def run(): Future[Http.ServerBinding] = {
 
+    println("Starting server ...")
+
     implicit val sys: ActorSystem = system
     implicit val ec: ExecutionContext = sys.dispatcher
 
