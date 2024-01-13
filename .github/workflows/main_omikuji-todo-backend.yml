@@ -27,7 +27,7 @@ jobs:
           java-version: '11'
 
       - name: Build with sbt
-        run: sbt package
+        run: sbt assembly
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v3
