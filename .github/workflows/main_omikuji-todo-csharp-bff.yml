@@ -14,6 +14,9 @@ on:
 jobs:
   build:
     runs-on: windows-latest
+    defaults:
+      run:
+        working-directory: csharp-bff
 
     steps:
       - uses: actions/checkout@v4
