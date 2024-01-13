@@ -32,14 +32,14 @@ class Main(system: ActorSystem) {
     val binding = Http()
       .newServerAt(
         interface = "0.0.0.0",
-        port = 443
+        port = 8585
       )
       .bind(
         ServiceHandler.concatOrNotFound(greeterService, todoService, reflection)
       )
 
     binding.foreach { binding =>
-      println(s"gRPC server bound to: ${binding.localAddress}")
+      println(s"gRPC server now bound to: ${binding.localAddress}")
     }
     binding
   }
