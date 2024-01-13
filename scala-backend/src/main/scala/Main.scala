@@ -27,8 +27,8 @@ class Main(system: ActorSystem) {
 
     val binding = Http()
       .newServerAt(
-        interface = "127.0.0.1",
-        port = 8080
+        interface = "0.0.0.0",
+        port = 8585
       )
       .bind(
         ServiceHandler.concatOrNotFound(greeterService, todoService, reflection)
