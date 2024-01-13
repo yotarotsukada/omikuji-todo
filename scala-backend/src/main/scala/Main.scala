@@ -27,13 +27,13 @@ class Main(system: ActorSystem) {
     val reflection: PartialFunction[HttpRequest, Future[HttpResponse]] =
       ServerReflection.partial(List(GreeterService, TodoService))
 
+    val port = env.get("SERVER_PORT").getOrElse("8585").toInt
     println(s"SERVER_PORT is defined as ${env.get("SERVER_PORT").get}")
-    // val port = env.get("SERVER_PORT").getOrElse("8585").toInt
 
     val binding = Http()
       .newServerAt(
         interface = "0.0.0.0",
-        port = 8585
+        port = 80
       )
       .bind(
         ServiceHandler.concatOrNotFound(greeterService, todoService, reflection)
