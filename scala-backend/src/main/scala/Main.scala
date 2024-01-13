@@ -15,7 +15,6 @@ import scala.concurrent.{ExecutionContext, Future}
 class Main(system: ActorSystem) {
 
   def run(): Future[Http.ServerBinding] = {
-    println("Starting server...")
 
     implicit val sys: ActorSystem = system
     implicit val ec: ExecutionContext = sys.dispatcher
@@ -29,19 +28,18 @@ class Main(system: ActorSystem) {
       ServerReflection.partial(List(GreeterService, TodoService))
 
     val port = env.get("SERVER_PORT").getOrElse("8585").toInt
-    println(s"port number is ${env.get("SERVER_PORT").get}")
 
     val binding = Http()
       .newServerAt(
         interface = "0.0.0.0",
-        port = port
+        port = 443
       )
       .bind(
         ServiceHandler.concatOrNotFound(greeterService, todoService, reflection)
       )
 
     binding.foreach { binding =>
-      println(s"gRPC server bocund to: ${binding.localAddress}")
+      println(s"gRPC server bound to: ${binding.localAddress}")
     }
     binding
   }
