@@ -8,6 +8,7 @@ import com.typesafe.config.ConfigFactory
 import example.myapp.helloworld.grpc.{GreeterService, GreeterServiceHandler}
 import example.GreeterServiceImpl
 import scala_backend.todo.grpc.{TodoService, TodoServiceHandler}
+import sys.env
 
 import scala.concurrent.{ExecutionContext, Future}
 
@@ -25,10 +26,12 @@ class Main(system: ActorSystem) {
     val reflection: PartialFunction[HttpRequest, Future[HttpResponse]] =
       ServerReflection.partial(List(GreeterService, TodoService))
 
+    val port = env.get("SERVER_PORT").getOrElse("8585").toInt
+
     val binding = Http()
       .newServerAt(
         interface = "0.0.0.0",
-        port = 8585
+        port = port
       )
       .bind(
         ServiceHandler.concatOrNotFound(greeterService, todoService, reflection)
