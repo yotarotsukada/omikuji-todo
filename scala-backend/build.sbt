@@ -14,3 +14,7 @@ libraryDependencies ++= Seq(
 )
 
 enablePlugins(AkkaGrpcPlugin)
+
+artifactName := { (sv: ScalaVersion, module: ModuleID, artifact: Artifact) =>
+  "OmikujiTodoBackend.jar"
+}
