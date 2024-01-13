@@ -1,6 +1,3 @@
-using System;
-using System.Linq;
-
 using CsharpBff.Types;
 using Grpc.Core;
 using ScalaBackend.Todo;
@@ -13,7 +10,11 @@ public class TodoGrpcService
 
     public TodoGrpcService()
     {
-        var channel = new Channel("127.0.0.1", 8080, ChannelCredentials.Insecure);
+        var cbr = new ConfigurationBuilder().AddUserSecrets<Program>().Build();
+        string grpcServerHost = cbr["GrpcServerHost"];
+        int grpcServerPort = int.Parse(cbr["GrpcServerPort"]);
+
+        var channel = new Channel(grpcServerHost, grpcServerPort, ChannelCredentials.Insecure);
         todoClient = new TodoService.TodoServiceClient(channel);
     }
 
